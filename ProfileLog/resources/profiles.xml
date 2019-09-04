@@ -1,0 +1,38 @@
+<?xml version = "1.0"?>
+<people>
+   <person>
+      <firstname>phil</firstname>
+      <lastname>timmons</lastname>
+      <area>53221</area>
+      <occupation>student</occupation>
+      <personalities>
+      	<personality>dependable</personality>
+      	<personality>adventurous</personality>
+      	<personality>independent</personality>
+      </personalities>
+   </person>
+   
+   <person>
+      <firstname>mark</firstname>
+      <lastname>adams</lastname>
+      <area>53221</area>
+      <occupation>guard</occupation>
+      <personalities>
+      	<personality>solitary</personality>
+      	<personality>observant</personality>
+      	<personality>humble</personality>
+      </personalities>
+   </person>
+   
+   <person>
+      <firstname>lily</firstname>
+      <lastname>stevens</lastname>
+      <area>53221</area>
+      <occupation>clerk</occupation>
+      <personalities>
+      	<personality>adventurous</personality>
+      	<personality>sociable</personality>
+      	<personality>adaptable</personality>
+      </personalities>
+   </person> 
+</people>

@@ -1,0 +1,19 @@
+*Notes: There isn't much implemented for error handling or input validation.
+
+*Contents: 
+
+src/
+-com.jbrewer.webapps.proflogs
+--LogBook.java
+--Profile.java
+--ProfileServlet.java
+
+resources/
+-index.html
+-profiles.xml
+
+build.properties
+build.xml
+web.xml
+notes.txt
+README.txt
