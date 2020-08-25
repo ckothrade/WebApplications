@@ -1,0 +1,18 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main class="centered">
+            <h1><%= post.title %></h1>
+            <hr>
+            <div class="image">
+                <img src="<%= post.imageUrl %>" alt="<%= post.title %>">
+            </div>
+            <h2><%= post.time %></h2>
+            <p><%= post.description %></p>
+            <% if(true) { %>
+                <%- include('../includes/add-to-schedule.ejs', {post: post}) %>
+            <% } %>
+        </main>
+        <%- include('../includes/end.ejs') %>

@@ -1,0 +1,49 @@
+<%- include('../includes/head.ejs') %>
+  <link rel="stylesheet" href="/css/post.css">
+</head>
+
+<body>
+  <%- include('../includes/navigation.ejs') %>
+
+  <main>
+    <% if (posts.length > 0) { %>
+      <div class="grid">
+        <% for (let p of posts) { %>
+          <article class="card post-item">
+            <header class="card__header">
+              <h1 class="post__title">
+                <%= p.title %>
+              </h1>
+            </header>
+            <div class="card__image">
+              <img src="<%= p.imageUrl %>" alt="<%= p.title %>">
+            </div>
+            <div class="card__content">
+              <h2 class="post__time">Time: 
+                <%= p.time %>
+              </h2>
+              <h2 class="post__duration">Duration: 
+                <%= p.duration %>
+              </h2>
+              <h2 class="post__slots">Openings: 
+                <%= p.slots %>
+              </h2>
+              <p class="post__description">
+                <%= p.description %>
+              </p>
+            </div>
+            <div class="card__actions">
+              <a href="/admin/edit-post/<%= p._id %>?edit=true" class="btn">Edit</a>
+              <form action="/admin/delete-post" method="POST">
+                <input type="hidden" value="<%= p._id %>" name="postId">
+                <button class="btn" type="submit">Delete</button>
+              </form>
+            </div>
+          </article>
+        <% } %>
+      </div>
+    <% } else { %>
+      <h1>No Posts Found!</h1>
+    <% } %>
+  </main>
+<%- include('../includes/end.ejs') %>

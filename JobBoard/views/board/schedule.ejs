@@ -1,0 +1,32 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/schedule.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main>
+            <% if (posts.length > 0) { %>
+                <ul class="sched__item-list">
+                    <% posts.forEach(p => { %>
+                        <li class="sched__item">
+                            <h1><%= p.postId.title %></h1>
+                            <h2>Duration: <%= p.duration %></h2>
+                            <form action="/schedule-remove-job" method="POST">
+                                <input type="hidden" value="<%= p.postId._id %>" name="postId">
+                                <button class="btn danger" type="submit">Remove</button>
+                            </form>
+                        </li>
+                    <% }) %>
+                </ul>
+                <hr>
+                <div class="centered">
+                    <form action="/create-order" method="POST">
+                        <button type="submit" class="btn">Order Now!</button>
+                    </form>
+                </div>
+                
+            <% } else { %>
+                <h1>Your Schedule is Clear!</h1>
+            <% } %>
+        </main>
+        <%- include('../includes/end.ejs') %>
