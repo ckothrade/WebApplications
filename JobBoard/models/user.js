@@ -6,7 +6,11 @@ const Post = require('./post');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  name: {
+  // name: {
+  //   type: String,
+  //   required: true
+  // },
+  password: {
     type: String,
     required: true
   },
@@ -14,6 +18,8 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  resetToken: String,
+  resetTokenExp: Date,
   schedule: {
     jobs: [
       {

@@ -1,11 +1,15 @@
 const Post = require('../models/post');
 
+const { validationResult } = require('express-validator/check');
+
 exports.getAddPost = (req, res, next) => {
   res.render('admin/edit-post', {
     pageTitle: 'Add Post',
     path: '/admin/add-post',
-    editing: false
-    //isAuthenticated: req.session.isLoggedIn
+    editing: false,
+    hasError: false,
+    errorMsg: null,
+    validationErrors: []
   });
 };
 
@@ -18,6 +22,30 @@ exports.postAddPost = (req, res, next) => {
   const duration = req.body.duration;
   const slots = req.body.slots;
   const description = req.body.description;
+
+  // Checks the request for any errors thrown by router
+  const errors = validationResult(req);
+
+  // If there is errors in creating post
+  if (!errors.isEmpty()) {
+    console.log(errors.array());
+    return res.status(422).render('admin/edit-post', {
+      pageTitle: 'Add Post',
+      path: '/admin/edit-post',
+      editing: false,
+      hasError: true,
+      post: {
+        title: title, 
+        imageUrl: imageUrl, 
+        time: time, 
+        duration: duration, 
+        slots: slots, 
+        description: description
+      },
+      errorMsg: errors.array()[0].msg,
+      validationErrors: errors.array()
+    });
+  }
 
   // Create new Post
   const post = new Post({
@@ -44,15 +72,12 @@ exports.postAddPost = (req, res, next) => {
 
 exports.getPosts = (req, res, next) => {
   Post.find()
-    // .select('title price -_id')
-    // .populate('userId', 'name')
     .then(posts => {
       console.log(posts);
       res.render('admin/posts', {
         posts: posts,
         pageTitle: 'Admin Posts',
-        path: '/admin/posts',
-        //isAuthenticated: req.session.isLoggedIn
+        path: '/admin/posts'
       });
     })
     .catch(err => console.log(err));
@@ -79,8 +104,10 @@ exports.getEditPost = (req, res, next) => {
         pageTitle: 'Edit Post',
         path: '/admin/edit-post',
         editing: editMode,
-        post: post
-        //isAuthenticated: req.session.isLoggedIn
+        post: post,
+        hasError: false,
+        errorMsg: null,
+        validationErrors: []
       });
     })
     .catch(err => console.log(err));
@@ -97,6 +124,30 @@ exports.postEditPost = (req, res, next) => {
   const updatedDesc = req.body.description;
 
   const postId = req.body.postId;
+
+  // Checks the request for any errors thrown by router
+  const errors = validationResult(req);
+
+  // If there is errors in creating post
+  if (!errors.isEmpty()) {
+    return res.status(422).render('admin/edit-post', {
+      pageTitle: 'Edit Post',
+      path: '/admin/edit-post',
+      editing: true,
+      hasError: true,
+      post: {
+        title: updatedTitle, 
+        imageUrl: updatedImageUrl, 
+        time: updatedTime, 
+        duration: updatedDuration, 
+        slots: updatedSlots, 
+        description: updatedDesc,
+        _id: postId
+      },
+      errorMsg: errors.array()[0].msg,
+      validationErrors: errors.array()
+    });
+  }
 
   Post.findById(postId)
     .then(post => {

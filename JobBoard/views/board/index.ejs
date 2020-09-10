@@ -25,7 +25,7 @@
                         </div>
                         <div class="card__actions">
                             <a href="/posts/<%= p._id %>" class="btn">Details</a>
-                            <% if(p.slots > 0) { %>
+                            <% if(p.slots > 0 && isAuthenticated) { %>
                                     <%- include('../includes/add-to-schedule.ejs', {post: p}) %>
                             <% } %>
                         </div>

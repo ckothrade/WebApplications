@@ -7,8 +7,7 @@ exports.getPosts = (req, res, next) => {
       res.render('board/post-list', {
         posts: posts,
         pageTitle: 'All Posts',
-        path: '/posts',
-        //isAuthenticated: req.session.isLoggedIn
+        path: '/posts'
       });
     })
     .catch(err => {
@@ -22,8 +21,7 @@ exports.getIndex = (req, res, next) => {
     res.render('board/index', {
       posts: posts,
       pageTitle: 'Board',
-      path: '/',
-      //isAuthenticated: req.session.isLoggedIn
+      path: '/'
     });
   })
   .catch(err => {
@@ -53,8 +51,7 @@ exports.getSchedule = (req, res, next) => {
       res.render('board/schedule', {
         path: '/schedule',
         pageTitle: 'Your Schedule',
-        posts: posts,
-        // isAuthenticated: req.session.isLoggedIn
+        posts: posts
       });
     })
     .catch(err => console.log(err));

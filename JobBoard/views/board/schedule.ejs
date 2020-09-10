@@ -13,18 +13,12 @@
                             <h2>Duration: <%= p.duration %></h2>
                             <form action="/schedule-remove-job" method="POST">
                                 <input type="hidden" value="<%= p.postId._id %>" name="postId">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <button class="btn danger" type="submit">Remove</button>
                             </form>
                         </li>
                     <% }) %>
                 </ul>
-                <hr>
-                <div class="centered">
-                    <form action="/create-order" method="POST">
-                        <button type="submit" class="btn">Order Now!</button>
-                    </form>
-                </div>
-                
             <% } else { %>
                 <h1>Your Schedule is Clear!</h1>
             <% } %>
