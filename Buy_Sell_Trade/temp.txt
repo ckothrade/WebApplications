@@ -1,0 +1,9 @@
+edit-post.ejs text input for Category...
+
+<label for="category">Category</label>
+                <input 
+                    class="<%= validationErrors.find(e => e.param === 'category' ? 'invalid' : '') %>"
+                    type="text" 
+                    name="category" 
+                    id="category" 
+                    value="<% if (editing || hasError) { %><%= post.category %><% } %>">

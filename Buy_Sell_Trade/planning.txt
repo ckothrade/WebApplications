@@ -1,0 +1,12 @@
+ITEM
+- Title
+- Price
+- Qty
+- Condition
+- Desc
+- Image
+- Category
+
+- User_Id
+- Location
+

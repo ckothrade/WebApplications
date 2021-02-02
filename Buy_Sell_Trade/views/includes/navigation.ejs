@@ -1,0 +1,40 @@
+<header class="main-header">
+    <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+            <li class="main-header__item">
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Board</a>
+            </li>
+            <% if(isAuthenticated) { %>
+                <li class="main-header__item">
+                    <a class="<%= path === '/bookmarks' ? 'active' : '' %>" href="/bookmarks">Saved</a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= path === '/admin/posts' ? 'active' : '' %>" href="/admin/posts">Admin Posts</a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= path === '/admin/add-item' ? 'active' : '' %>" href="/admin/add-item">Add Item</a>
+                </li>
+            <% } %>
+        </ul>
+        <ul class="main-header__item-list">
+            <% if(!isAuthenticated) { %>
+            <li class="main-header__item">
+                <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Signup</a>
+            </li>
+            <% } else { %>
+            <li class="main-header__item">
+                <a class="<%= path === '/inbox' ? 'active' : '' %>" href="/inbox">Mail</a>
+            </li>
+            <li class="main-header__item">
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+            <% } %>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,39 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/stubs.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main>
+            <% if (stubs.length <= 0) { %>
+                <h1>There are currently no stubs on record for you!</h1>
+            <% } else { %>
+                <ul class="stubs">
+                    <% stubs.forEach(stub => { %>
+                        <li class="stubs__item">
+                            <h1>Stub - # <%= stub._id %> - <a href="/my-stubs/<%= stub._id %>">Record</a></h1>
+                            <ul class="stubs__post">
+                                <li class="stubs__post-item">Assignment Title: <%= stub.post.title %></li>
+                                <li class="stubs__post-item">Time: <%= stub.post.time %></li>
+                            </ul>
+                        </li>
+                    <% }); %>
+                </ul>
+                <section class="pagination">
+                    <% if (currentPg !== 1 && prevPg !== 1) { %>
+                        <a href="/my-stubs/?page=1">1</a>
+                    <% } %>
+                    <% if (hasPrevPg) { %>
+                        <a href="/my-stubs/?page=<%= prevPg %>"><%= prevPg %></a>
+                    <% } %>
+                    <a href="/my-stubs/?page=<%= currentPg %>" class="active"><%= currentPg %></a>
+                    <% if (hasNextPg) { %>
+                        <a href="/my-stubs/?page=<%= nextPg %>"><%= nextPg %></a>
+                    <% } %>
+                    <% if (lastPg !== currentPg && nextPg !== lastPg) { %>
+                        <a href="/my-stubs/?page=<%= lastPg %>"><%= lastPg %></a>
+                    <% } %>
+                </section>
+            <% } %>
+        </main>
+        <%- include('../includes/end.ejs') %>

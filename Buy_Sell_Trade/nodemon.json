@@ -1,0 +1,7 @@
+{
+    "env": {
+      "MONGO_USER": "kothrade",
+      "MONGO_PASSWORD": "mongoDB414",
+      "MONGO_DB": "bst"
+    }
+}

@@ -1,0 +1,6 @@
+<form action="/contact" method="POST">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <button class="btn" type="submit">CONTACT</button>
+  <input type="hidden" name="postId" value="<%= item._id %>">
+  <input type="hidden" name="sellerId" value="<%= item.userId %>">
+</form>

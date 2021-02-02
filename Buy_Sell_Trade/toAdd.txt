@@ -1,0 +1,3 @@
+- Change bookmark button to a hover graphic/icon
+
+- Add a sold/no-longer-available field to product model 
