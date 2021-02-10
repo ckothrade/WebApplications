@@ -1,0 +1,2 @@
+Errors/Bugs:
+- If adding an item fails, the page reloaded will be an editing page. Then, if you attempt to edit, there is no post to find when it comes to editing because it was never created. Gets a TypeError, cannot set property of 'null'
