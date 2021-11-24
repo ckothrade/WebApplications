@@ -1,0 +1,507 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --background-gradient: linear-gradient(30deg, #f39c12 30%, #f1c40f);
+  --gray: #34495e;
+  --darkgray:#2c3e50;
+
+  --names: #2c3e50;
+  /*--names: #a92bcf;*/
+
+
+  /* css-tricks.com/optimizing-large-scale-displays */
+  /*------------------- Scaling breakpoints? -------------------------*/
+  /* breakpoints */
+  --bp-small: 48em; /* 768px */
+  --bp-medium: 64em; /* 1024px */
+  --bp-large: 85.375em; /* 1366px */
+  --bp-xlarge: 120em; /* 1920px */
+  --bp-xxlarge: 160em; /* 2560px */
+
+  /* media queries */
+  --mq-small: "(min-width: var(--bp-small)";
+  --mq-medium: "(min-width: var(--bp-medium)";
+  --mq-large: "(min-width: var(--bp-large)";
+  --mq-xlarge: "(min-width: var(--bp-xlarge)";
+  --mq-xxlarge: "(min-width: var(--bp-xxlarge)";
+  --mq-retina: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)";
+  
+
+}
+
+.header {
+  text-align: center;
+  background: var(--darkgray);
+  font-size: 1.5rem;
+  color: white;
+  border-bottom: 2px solid green;
+  padding-bottom: .5em;
+  margin-bottom: 1em;
+}
+
+.header h1, .header p {
+  /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+  -webkit-text-stroke: 1px black;
+  -webkit-text-fill-color: white;
+}
+
+.wrapper {
+  /*width: 100%;*/
+  width: 90%;
+  /*margin-left: 1em;*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.wrapper h1 {
+  padding: 30px 30px 20px;
+  text-align: center;
+  color: red;
+}
+
+.pokeList li {
+  margin-bottom: 10em;
+}
+
+/*------ custom dropdown select Raul Barrera PURe CSS SELECT */
+select {
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  flex: 1;
+  padding: 0 1em;
+  color: #fff;
+  background-color: var(--darkgray); /*box bkgrnd*/
+  background-image: none;
+  cursor: pointer;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+
+  margin-bottom: 1em;
+}
+
+/* arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #34495e; /* arrow box */
+  transition: .25s all ease;
+  pointer-events: none;
+}
+
+/* transition */
+.select:hover::after {
+  color: var(--names); /* arrow on hover */
+}
+
+/*----- end select box  */
+
+/*----- Custom button list */
+.wrapper1{
+  /*margin: 2em 0;*/
+  margin: 2em 1em;
+}
+a,a:visited,a:hover,a:active{
+  -webkit-backface-visibility:hidden;
+          backface-visibility:hidden;
+	position:relative;
+  transition:0.5s color ease;
+	text-decoration:none;
+	/*color:#81b3d2;*/
+  color: #080b0e;
+	/*font-size: .5em;*/
+  font-size: 1.5rem;
+}
+a:hover{
+	/*color:#d73444;*/
+  color: var(--names);
+}
+a.before:before,a.after:after{
+  content: "";
+  transition:0.5s all ease;
+  -webkit-backface-visibility:hidden;
+          backface-visibility:hidden;
+  position:absolute;
+}
+a.before:before{
+  top:-0.25em;
+}
+a.after:after{
+  bottom:-0.25em;
+}
+a.before:before,a.after:after{
+  height:5px;
+  height:0.35rem;
+  width:0;
+  /*background:#d73444;*/
+  background: var(--names);
+}
+
+a.before:hover:before,a.after:hover:after{
+  width:100%;
+}
+
+.square{
+  box-sizing:border-box;
+  margin-left:-0.4em;
+  position:relative;
+  /*font-size:2.5em;*/
+  font-size: 1.5rem;
+  overflow:hidden;
+}
+.square a{
+  position:static;
+  font-size:100%;
+  padding:0.2em 0.4em;
+}
+.square:before,.square:after{
+  content: "";
+  box-sizing:border-box;
+  transition:0.25s all ease;
+  -webkit-backface-visibility:hidden;
+          backface-visibility:hidden;
+  position:absolute;
+  width:5px;
+  width:0.35rem;
+  height:0;
+  /*background:#d73444;*/
+  background: var(--names);
+}
+.square:before{
+  left:0;
+  bottom:-0.2em;
+}
+.square.individual:before{
+  transition-delay:0.6s;
+}
+.square:after{
+  right:0;
+  top:-0.2em;
+}
+.square.individual:after{
+  transition-delay:0.2s;
+}
+.square a:before{
+  left:0;
+  transition:0.25s all ease;
+}
+.square a:after{
+  right:0;
+  transition:0.25s all ease;
+}
+.square.individual a:after{
+  transition:0.25s all ease 0.4s;
+}
+.square:hover:before,.square:hover:after{
+  height:calc(100% + 0.4em);
+}
+.square:hover a:before,.square:hover a:after{
+  width:100%;
+}
+
+/*----- end button list   */
+
+/*----- start search button   */
+.browse a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  /*color: #03e9f4;*/
+  color: var(--names);
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+.browse a:hover {
+  /*background: #03e9f4;*/
+  background: var(--names);
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--names),
+              0 0 25px var(--names),
+              0 0 50px var(--names),
+              0 0 100px var(--names);
+  /*box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;*/
+}
+
+.browse a span {
+  position: absolute;
+  display: block;
+}
+
+.browse a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  /*background: linear-gradient(90deg, transparent, #03e9f4);*/
+  background: linear-gradient(90deg, transparent, var(--names));
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.browse a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  /*background: linear-gradient(180deg, transparent, #03e9f4);*/
+  background: linear-gradient(180deg, transparent, var(--names));
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.browse a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  /*background: linear-gradient(270deg, transparent, #03e9f4);*/
+  background: linear-gradient(270deg, transparent, var(--names));
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.browse a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  /*background: linear-gradient(360deg, transparent, #03e9f4);*/
+  background: linear-gradient(360deg, transparent, var(--names));
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+/*----- end search button   */
+
+
+/* --------------Pokemon Bio List--------------- */
+.bio {
+  width: 90%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: .75em .75em;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-shadow: 0 0 .5em rgb(79, 172, 141);
+  background-color: aquamarine;
+  
+  display: flex;
+  justify-content: space-around;
+}
+
+.bio p {
+  padding: .75em .25em;
+}
+
+.character h3{
+ margin-top: 1em;
+ display: block;
+}
+
+.character h2{
+  margin-top: 1em;
+  display: none;
+ }
+
+.character h1{
+  margin-top: 1em;
+  display: none;
+ }
+
+.character ul{
+  list-style-position: inside;
+  list-style-type: none;
+}
+
+.character li {
+  font-size: 1rem;
+}
+
+/*-------------- end Pokemon Bio List -----------  */
+
+/* ------------------To Top Button----------------- */
+#return {
+  position: fixed;
+  bottom: 1.5em;
+  right: 1em;
+}
+
+#return a {
+  padding: 0.3em 1.2em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid rgba(255,255,255, 0);
+  background-color: var(--names);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: white;
+  text-shadow: 0 0.04 0.04em rgba(0,0,00.35);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+#return a:hover {
+  /*border-color: rgba(255,255,255,1);*/
+  border-color: black;
+}
+
+@media all and (max-width:30em){
+  #return a {
+    margin: 0.2em auto;
+  }
+}
+
+/* Tablets */
+@media only screen and (min-width: 760px) {
+
+  .header {
+    font-size: 2rem;
+  }
+
+  .wrapper {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  .wrapper h1 {
+    padding: 30px 30px 20px;
+    text-align: left;
+    color: blue;
+  }
+
+  /* for list decoration*/
+  .square {
+    font-size: 2rem;
+  }
+
+  /* for individual pokemon */
+  .bio {
+    width: 80%;
+    font-size: 2rem;
+  }
+
+  .character li {
+    font-size: 1.5rem;
+  }
+
+  .character h3 {
+    display: none;
+  }
+
+  .character h2 {
+    display: block;
+   }
+
+   ul.moves {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+  }
+
+}
+
+
+/* Desktop */
+@media only screen and (min-width: 960px) {
+
+  .wrapper {
+    width: 800px;
+    margin: 0 auto;
+  }
+
+
+  /* for list decoration*/
+  .square {
+    font-size: 3rem;
+  }
+
+  .wrapperList {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+  }
+
+  /* For individual pokemon */
+  .bio {
+    width: 80%;
+    max-width: 700px;
+    font-size: 2.5rem;
+  }
+
+  .character {
+    font-size: 2.5rem; /*maybe delete */
+  }
+
+  .character li {
+    font-size: 2.5rem; /* maybe 2rem*/
+  }
+}

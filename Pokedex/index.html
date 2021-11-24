@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="css/style.css" />
+    <title>POKEDEX</title>
+    <script src="scripts/scripts.js"></script>
+	</head>
+	<body>
+		<a name="Top"></a>
+		<div class="header">
+			<h1 >POKEDEX</h1>
+			<p>presented by <strong>BIGFOOTBINARY</strong></p>
+		</div>
+		<div class="wrapper">
+			<label for="types">Browse By Type:</label>
+			<div class="select" style="width:240px;">
+				<select name="types" id="types" onchange="changeColor(value)">
+					<option value="default" selected>Select Type</option>
+					<option value="normal">NORMAL</option>
+					<option value="fire">FIRE</option>
+					<option value="water">WATER</option>
+					<option value="grass">GRASS</option>
+					<option value="electrics">ELECTRIC</option>
+					<option value="ice">ICE</option>
+					<option value="fighting">FIGHTING</option>
+					<option value="poison">POISON</option>
+					<option value="ground">GROUND</option>
+					<option value="flying">FLYING</option>
+					<option value="psychic">PSYCHIC</option>
+					<option value="bug">BUG</option>
+					<option value="rock">ROCK</option>
+					<option value="ghost">GHOST</option>
+					<option value="dark">DARK</option>
+					<option value="dragon">DRAGON</option>
+					<option value="steel">STEEL</option>
+					<option value="fairy">FAIRY</option>
+				</select>
+			</div>
+			<button type="button" onclick="getPokemon()">SEARCH</button>
+			<button type="button" onclick="testPoke()">TEST</button>
+			<div class="browse">
+				<a href="#" onclick="getPokemon()">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					Submit
+				</a>
+			</div>
+			<!--<div id="return">
+				<a href="#Top">to Top</a>
+			</div>-->
+			<section id="info"></section>
+		</div>  
+	</body>
+</html>
