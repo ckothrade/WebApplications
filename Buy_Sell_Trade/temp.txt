@@ -7,3 +7,10 @@ edit-post.ejs text input for Category...
                     name="category" 
                     id="category" 
                     value="<% if (editing || hasError) { %><%= post.category %><% } %>">
+
+
+
+
+
+
+mongodb+srv://kothrade:mongoDB414@cluster0.jjlqz.mongodb.net/bst
