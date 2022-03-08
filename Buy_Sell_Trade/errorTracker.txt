@@ -9,4 +9,6 @@ Errors/Bugs:
 2022:
 
 
-admin posts (link):  still shows data fields from previous project. update placehold data fields to represent the buy sell trade site.
+admin posts (link):  still shows data fields from previous project. update placehold data fields to represent the buy sell trade site. 
+
+added gitignore
