@@ -19,18 +19,10 @@
               <img src="/<%= p.imageUrl %>" alt="<%= p.title %>">
             </div>
             <div class="card__content">
-              <h2 class="post__time">Time: 
-                <%= p.time %>
-              </h2>
-              <h2 class="post__duration">Duration: 
-                <%= p.duration %>
-              </h2>
-              <h2 class="post__slots">Openings: 
-                <%= p.slots %>
-              </h2>
-              <p class="post__description">
-                <%= p.description %>
-              </p>
+              <h2 class="post__price">Price: $<%= p.price %></h2>
+              <h2 class="post__quantity">Qty:  <%= p.quantity %></h2>
+              <h2 class="post__category">Category:  <%= p.category %></h2>
+              <h2 class="post__condition">Condition:  <%= p.condition %></h2>
             </div>
             <div class="card__actions">
               <a href="/admin/edit-post/<%= p._id %>?edit=true" class="btn">Edit</a>

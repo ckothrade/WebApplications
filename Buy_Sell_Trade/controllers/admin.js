@@ -86,6 +86,7 @@ exports.postAddItem = (req, res, next) => {
     category: category,
     imageUrl: imageUrl,
     location: location,
+    sold: false,
     userId: req.user
   });
 
