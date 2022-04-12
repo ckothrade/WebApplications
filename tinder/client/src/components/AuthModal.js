@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 import axios from 'axios'
 
 const AuthModal = ({setShowModal, isSignup}) => {
@@ -8,6 +9,7 @@ const AuthModal = ({setShowModal, isSignup}) => {
   const [password, setPassword] = useState(null)
   const [confirmPassword, setConfirmPassword] = useState(null)
   const [error, setError] = useState(null)
+  const [cookies, setCookie, removeCookie] = useCookies(['user'])
 
   let navigate = useNavigate()
 
@@ -26,10 +28,16 @@ const AuthModal = ({setShowModal, isSignup}) => {
         return
       }
 
-      const resp = await axios.post('http://localhost:8000/signup', {email, password})
+      const resp = await axios.post(`http://localhost:8000/${isSignup ? 'signup' : 'login'}`, {email, password})
+
+      setCookie('Email', resp.data.email)
+      setCookie('UserId', resp.data.userId)
+      setCookie('AuthToken', resp.data.token)
+
       const success = resp.status === 201
       
-      if (success) navigate('/onboarding')
+      if (success && isSignup) navigate('/onboarding')
+      if (success && !isSignup) navigate('/dashboard')
       // console.log('need to make a post request to the DB')
     } catch (error) {
       console.log(error)

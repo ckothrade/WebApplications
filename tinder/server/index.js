@@ -57,6 +57,34 @@ app.post('/signup', async (req, res) => {
 
 })
 
+app.post('/login', async (req, res) => {
+  const client = new MongoClient(uri)
+  const { email, password } = req.body
+
+  try {
+    await client.connect()
+    const database = client.db('tinder')
+    const users = database.collection('users')
+
+    const user = await users.findOne({ email })
+
+    const confirmedPW = await bcrypt.compare(password, user.hashed_pw)
+
+    if (user && confirmedPW) {
+      const token = jwt.sign(user, email, {
+        expiresIn: 60 * 24
+      })
+
+      res.status(201).json({ token, userId: user.user_id, email})
+    }
+    res.status(400).send('Invalid Credentials!')
+
+  } catch (err) {
+    console.log(err)
+  }
+
+})
+
 app.get('/users', async (req, res) => {
   const client = new MongoClient(uri)
 
