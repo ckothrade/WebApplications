@@ -107,6 +107,8 @@ app.get('/user', async (req, res) =>{
   const client = new MongoClient(uri)
   const userId = req.query.userId
 
+  // console.log('userId:', userId)
+
   try {
     await client.connect()
     const database = client.db('tinder')

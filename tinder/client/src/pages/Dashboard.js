@@ -13,6 +13,8 @@ const Dashboard = () => {
 
   const getUser = async () => {
 
+    console.log("get user is called")
+
     try {
 
       const response = await axios.get('http://localhost:8000/user', { 
@@ -70,7 +72,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <ChatContainer/>
+      <ChatContainer user={user}/>
       <div className="swipe-container">
         {characters.map((character) =>
           <TinderCard 
