@@ -7,6 +7,7 @@ import ChatContainer from '../components/ChatContainer'
 const Dashboard = () => {
 
   const [user, setUser] = useState(null)
+  const [preferredGender, setPreferredGender] = useState(null)
   const [cookies, setCookie, removeCookie] = useCookies(['user'])
 
   const userId = cookies.UserId
@@ -29,12 +30,27 @@ const Dashboard = () => {
     }
   }
 
+  const getPrefGender = async () => {
+    try {
+
+      const response = await axios.get('http://localhost:8000/preferred-gender', { 
+        params: { gender: user?.gender_interest } 
+      })
+      setPreferredGender(response.data)
+
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   // This will call the getUser method anytime the user changes
   useEffect (() => {
     getUser()
-  }, [])
+    getPrefGender()
+  }, [user, preferredGender])
 
-  console.log('user', user)
+  // console.log('user', user)
+  // console.log('preferred gender:', preferredGender)
 
   const characters = [
     {

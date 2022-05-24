@@ -12,9 +12,9 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.get('/', (req, res) => {
-  res.json('hello to my app')
-})
+// app.get('/', (req, res) => {
+//   res.json('hello to my app')
+// })
 
 app.post('/signup', async (req, res) => {
   const client = new MongoClient(uri)
@@ -126,6 +126,29 @@ app.get('/user', async (req, res) =>{
 
 })
 
+app.get('/preferred-gender', async (req, res) =>{
+  
+  const client = new MongoClient(uri)
+  const gender = req.query.gender
+
+
+  try {
+    await client.connect()
+    const database = client.db('tinder')
+    const users = database.collection('users')
+
+    // Query users based on their gender
+    const query = { gender_identity: { $eq : gender } }
+    
+
+    const retUsers = await users.find(query).toArray()
+    res.send(retUsers)
+
+  } finally {
+    await client.close()
+  }
+
+})
 
 
 app.put('/user', async (req, res) =>{
