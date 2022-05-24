@@ -38,6 +38,8 @@ const AuthModal = ({setShowModal, isSignup}) => {
       if (success && isSignup) navigate('/onboarding')
       if (success && !isSignup) navigate('/dashboard')
       // console.log('need to make a post request to the DB')
+      window.location.reload() // reloads after authToken is read
+
     } catch (error) {
       console.log(error)
     }
