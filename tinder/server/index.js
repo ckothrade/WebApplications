@@ -129,19 +129,23 @@ app.get('/user', async (req, res) =>{
 app.get('/preferred-gender', async (req, res) =>{
   
   const client = new MongoClient(uri)
+  // const gender = req.query.gender
   const gender = req.query.gender
 
+  console.log('passed gender', gender)
 
   try {
     await client.connect()
     const database = client.db('tinder')
     const users = database.collection('users')
 
+    console.log(gender)
     // Query users based on their gender
     const query = { gender_identity: { $eq : gender } }
-    
+    // const query = { gender_identity: 'female' }
 
     const retUsers = await users.find(query).toArray()
+    console.log('found:', retUsers)
     res.send(retUsers)
 
   } finally {

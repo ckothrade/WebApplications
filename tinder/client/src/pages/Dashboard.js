@@ -34,7 +34,9 @@ const Dashboard = () => {
     try {
 
       const response = await axios.get('http://localhost:8000/preferred-gender', { 
-        params: { gender: user?.gender_interest } 
+        // params: { gender: user?.gender_interest } 
+        params: { gender: 'female' } 
+
       })
       setPreferredGender(response.data)
 
